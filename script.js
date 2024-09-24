@@ -14,22 +14,41 @@ function getComputerChoice() {
 
 // function that prompts user for choice
 
-function getHumanChoice() {
-    let choice = prompt("akmens skeres papirits, viens divi tris!");
-    if (!choice) {
-        return 4;
-    }
-    // return numeric value of choice if input is rock paper or scissors
-    if (choice.toLowerCase() === choices[0]) {
+// function getHumanChoice() {
+//     let choice = prompt("akmens skeres papirits, viens divi tris!");
+//     if (!choice) {
+//         return 4;
+//     }
+//     // return numeric value of choice if input is rock paper or scissors
+//     if (choice.toLowerCase() === choices[0]) {
+//         return 0;
+//     } else if (choice.toLowerCase() === choices[1]) {
+//         return 1;
+//     } else if (choice.toLowerCase() === choices[2]) {
+//         return 2;
+//     } else {
+//         return 3;
+//     }
+// }
+const choiceContainer = document.querySelector("#choiceContainer");
+const choiceArray = choiceContainer.querySelectorAll("button");
+
+choiceArray.forEach(function(choice) {
+    choice.addEventListener("click", function() {
+        chosenWeapon = this.id;
+    });
+});
+
+function getHumanChoice(chosenWeapon) {
+    if (chosenWeapon === choices[0]) {
         return 0;
-    } else if (choice.toLowerCase() === choices[1]) {
+    } else if (chosenWeapon === choices[1]) {
         return 1;
-    } else if (choice.toLowerCase() === choices[2]) {
+    } else if (chosenWeapon === choices[0]) {
         return 2;
-    } else {
-        return 3;
     }
 }
+
 
 
 // function that allows to play a single round
