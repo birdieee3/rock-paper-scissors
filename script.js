@@ -35,6 +35,7 @@ function getComputerChoice() {
 const choiceContainer = document.querySelector("#choiceContainer");
 const choiceArray = choiceContainer.querySelectorAll("button");
 const startButton = document.querySelector('#start');
+const resetButton = document.querySelector("#reset");
 const roundAnnouncer = document.querySelector("h2");
 const choiceAnnouncer = document.querySelector("#choiceAnnouncer");
 
@@ -58,7 +59,7 @@ function getHumanChoice(chosenWeapon) {
         return 0;
     } else if (chosenWeapon === choices[1]) {
         return 1;
-    } else if (chosenWeapon === choices[0]) {
+    } else if (chosenWeapon === choices[2]) {
         return 2;
     }
 }
@@ -104,6 +105,7 @@ function playRound(computerChoice, humanChoice) {
 
     if (roundNumber < maxRounds) {
         roundNumber ++;
+        roundAnnouncer.textContent = "Round " + roundNumber;
     } else {
         endGame(computerScore, humanScore);
     }
@@ -170,9 +172,27 @@ startButton.addEventListener("click", function() {
     humanScore = 0;
     computerScore = 0;
     roundNumber = 1;
-    roundAnnouncer.textContent = "Round" + roundNumber;
+    roundAnnouncer.textContent = "Round " + roundNumber;
     finalResult.textContent = "";
-    runningScore.textContent= "";
+    runningScore.textContent = "";
+    choiceAnnouncer.textContent = "";
 
+    console.log("starting game");
 }
 )
+
+resetButton.addEventListener("click", function() {
+    humanScore = 0;
+    computerScore = 0;
+    roundNumber = 1;
+    roundAnnouncer.textContent = "";
+    finalResult.textContent = "";
+    runningScore.textContent = "";
+    choiceAnnouncer.textContent = "";
+
+    startButton.disabled = false;
+    choiceArray.forEach(function(choice) {
+        choice.disabled = true;
+    })
+    console.log("resetting game");
+})
