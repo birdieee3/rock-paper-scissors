@@ -8,14 +8,17 @@
 </head>
 <body>
     <h1>play rock paper scissors with the computer!</h1>
+    <button id="start">Start game</button>
     <h2></h2> 
     <h3>Choose:</h3>
     <div id="choiceContainer">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button id="rock" disabled>Rock</button>
+        <button id="paper" disabled>Paper</button>
+        <button id="scissors" disabled>Scissors</button>
     </div>
+    <div id="choiceAnnouncer"></div>
     <div id="resultsContainer">
+        <h4>Score:</h4>
         <p id="runningScore"></p>
         <p id="winner"></p>
     </div>
